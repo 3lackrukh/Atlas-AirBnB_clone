@@ -1,6 +1,9 @@
-# Air BnB Console
+### Air BnB Console
+## About
+This project is the first step in the AirBnB project for the Atlas School Higher Level Programming course. This project entails building a custom command line interpreter.
+
 ## Requirements
-### Python Scripts
+# Python Scripts
 + Allowed editors: vi, vim, emacs
 + All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
 + All your files should end with a new line
@@ -14,7 +17,7 @@
 + All your functions (inside and outside a class) should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module"). MyClass.my_function.__doc__)')
 + A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
 
-# Python UnitTests
+### Python UnitTests
 + Allowed editors: vi, vim, emacs
 + All your files should end with a new line
 + All your test files should be inside a folder tests
@@ -31,7 +34,7 @@ e.g., For models/user.py, unit tests must be in: tests/test_models/test_user.py
 + All your functions (inside and outside a class) should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)')
 + We strongly encourage you to work together on test cases, so that you don’t miss any edge case
 
-### Interactive Mode
+# Interactive Mode
 ```
 $ ./console.py
 (hbnb) help
@@ -69,8 +72,7 @@ EOF  help  quit
 $
 ```
 
-![alt text](Chart for Air BnB Readme.png)
 
-# Authors:
+### Authors:
 + Nathan Rhys
 + Ashley Ramer
