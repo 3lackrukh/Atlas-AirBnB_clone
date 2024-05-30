@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import uuid
-import datetime
+from datetime import datetime
 """
     This module defines the class BaseModel
     from which other classes will inherit.
@@ -21,7 +21,7 @@ class BaseModel:
                 - to_dict: returns a dictionary of instance attributes.
 
     """
-    def __init__(self):
+    def __init__(self, id=None, created_at=None):
         """
             Private method initializes an object
             and generates a unique id using uuid4()
