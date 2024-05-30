@@ -1,6 +1,6 @@
-### Air BnB Console
+# Air BnB Console
 ## Requirements
-# Python Scripts
+### Python Scripts
 + Allowed editors: vi, vim, emacs
 + All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
 + All your files should end with a new line
@@ -31,7 +31,7 @@ e.g., For models/user.py, unit tests must be in: tests/test_models/test_user.py
 + All your functions (inside and outside a class) should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)')
 + We strongly encourage you to work together on test cases, so that you don’t miss any edge case
 
-# Interactive Mode
+### Interactive Mode
 ```
 $ ./console.py
 (hbnb) help
@@ -46,7 +46,7 @@ EOF  help  quit
 $
 ```
 
-# Non-Interactive Mode
+### Non-Interactive Mode
 ```
 $ echo "help" | ./console.py
 (hbnb)
