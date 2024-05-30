@@ -27,3 +27,4 @@ class BaseModel:
             and generates a unique id using uuid4()
         """
         self.id = uuid.uuid4().hex
+        self.created_at = datetime.now()
