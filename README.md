@@ -3,6 +3,7 @@
 This project is the first step in the AirBnB project for the Atlas School Higher Level Programming course. This project entails building a custom command line interpreter.
 
 ## Requirements
+
 ### Python Scripts
 + Allowed editors: vi, vim, emacs
 + All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
@@ -77,6 +78,6 @@ $
 ```
 
 
-# Authors:
+### Authors:
 + Nathan Rhys
 + Ashley Ramer
