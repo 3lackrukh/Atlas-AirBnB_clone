@@ -26,4 +26,4 @@ class BaseModel:
             Private method initializes an object
             and generates a unique id using uuid4()
         """
-        self.id = uuid.uuid4()
+        self.id = uuid.uuid4().hex
