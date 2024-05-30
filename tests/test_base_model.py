@@ -19,6 +19,14 @@ class TestMyClass(unittest.TestCase):
     def test_updated_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.updated_at)
+    
+    def test_str(self):
+        obj = BaseModel()
+        expected = "[{}] ({}) {}".format(
+            obj.__class__.__name__,
+            obj.id,
+            obj.__dict__)
+        self.assertEqual(expected, str(obj))
 
     def test_save(self):
         obj = BaseModel()
