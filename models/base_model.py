@@ -38,3 +38,18 @@ class BaseModel:
             self.__class__.__name__,
             self.id,
             self.__dict__)
+
+    def save(self):
+        """
+            Updates updated_at attribute with current datetime.
+        """
+        self.updated_at = datetime.now()
+
+    def to_dict(self):
+        """
+            Returns a dictionary of instance attributes
+        """
+        dictionary = self.__dict__.copy()
+        dictionary["__class__"] = self.__class__.__name__
+        
+        
