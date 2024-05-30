@@ -15,7 +15,7 @@ class BaseModel:
             - updated_at:
         Methods:
             Private instance Methods:
-                - __str__: prints a string representation of an instance.
+                - __str__: returns a string representation of an instance.
             Public instance Methods:
                 - save: updates the updated_at attribute with the current datetime. 
                 - to_dict: returns a dictionary of instance attributes.
@@ -32,7 +32,7 @@ class BaseModel:
 
     def __str__(self):
         """
-            Prints a string representation of the instance
+            Returns a string representation of the instance
         """
         return"[{}] ({}) {}".format(
             self.__class__.__name__,
