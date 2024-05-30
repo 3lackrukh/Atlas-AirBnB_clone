@@ -13,8 +13,12 @@ class TestMyClass(unittest.TestCase):
         self.assertIsInstance(obj.id, str)
 
     def test_created_at(self):
-        obj = BaseModel
+        obj = BaseModel()
         self.assertIsNotNone(obj.created_at)
+
+    def test_updated_at(self):
+        obj = BaseModel()
+        self.assertIsNotNone(obj.updated_at)
         
 
 if __name__ == '__main__':

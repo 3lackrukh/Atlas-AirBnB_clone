@@ -21,10 +21,20 @@ class BaseModel:
                 - to_dict: returns a dictionary of instance attributes.
 
     """
-    def __init__(self, id=None, created_at=None):
+    def __init__(self, *args, **kwargs):
         """
             Private method initializes an object
             and generates a unique id using uuid4()
         """
         self.id = uuid.uuid4().hex
         self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+    def __str__(self):
+        """
+            Prints a string representation of the instance
+        """
+        return"[{}] ({}) {}".format(
+            self.__class__.__name__,
+            self.id,
+            self.__dict__)
