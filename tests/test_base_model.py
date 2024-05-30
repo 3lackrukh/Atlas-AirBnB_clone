@@ -19,7 +19,13 @@ class TestMyClass(unittest.TestCase):
     def test_updated_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.updated_at)
-        
+
+    def test_save(self):
+        obj = BaseModel()
+        initial = obj.updated_at
+        obj.save()
+        saved = obj.updated_at
+        self.assertNotEqual(initial, saved)
 
 if __name__ == '__main__':
     unittest.main()
