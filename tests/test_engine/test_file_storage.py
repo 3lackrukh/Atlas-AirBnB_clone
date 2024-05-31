@@ -11,6 +11,6 @@ class MyFileStorage(unittest.TestCase):
     
     def test_init(self):
         """Initializes test case FileStorage"""
-        self.assertIsInstance(self.store1.file_path, str)
-        self.assertIsInstance(self.store1.
-        objects, dict)
+        store1 = FileStorage()
+        self.assertIsInstance(store1.file_path, str)
+        self.assertIsInstance(store1.objects, dict)
