@@ -28,8 +28,10 @@ class FileStorage:
                       does nothing.
     """
 
-    def self.__file_path()
-    def self.__objects()
+    self.__file_path = ("")
+
+    self.__objects = []
+
     def all(self):
         """Returns the dictionary __objects"""
         return self.__objects
@@ -37,4 +39,12 @@ class FileStorage:
     def new(self, obj):
         """stores an object in __objects"""
         __objects["obj.id"] = obj.to_dict()
-        
+
+    def save(self):
+        """serializes __objects to the JSON file specified in __file_path"""
+        if self.__file_path:
+            for key in self.__objects:
+                json.dumps(self.__objects[key])
+                with open(__file_path, "w") as f:
+                    f.write(self.objects[key])
+            else pass
