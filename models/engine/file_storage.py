@@ -37,7 +37,7 @@ class FileStorage:
         return self.__file_path
 
     @property
-    def object(self):
+    def objects(self):
         return self.__objects
 
     @file_path.setter
