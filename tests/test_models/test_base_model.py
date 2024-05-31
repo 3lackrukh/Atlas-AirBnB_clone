@@ -43,5 +43,12 @@ class TestMyClass(unittest.TestCase):
         self.assertEqual(dictionary["created_at"], obj.created_at.isoformat())
         self.assertEqual(dictionary["updated_at"], obj.updated_at.isoformat())
 
+    def test_init_from_dict(self):
+        obj = BaseModel()
+        json_obj = BaseModel(**obj.to_dict())
+        self.assertEqual(obj.id, json_obj.id)
+        self.assertEqual(obj.created_at, json_obj.created_at)
+        self.assertEqual(obj.updated_at, json_obj.updated_at)
+
 if __name__ == '__main__':
     unittest.main()
