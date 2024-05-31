@@ -26,3 +26,14 @@ class FileStorage:
             - reload: deserializes the JSON file specified
                       in __file_path. If file does not exist,
                       does nothing.
+    """
+
+    def self.__file_path()
+    def self.__objects()
+    def all(self):
+        """Returns the dictionary __objects"""
+        return self.__objects
+
+    def new(self, obj):
+        """stores an object in __objects"""
+        __objects["obj.id"] = obj.to_dict()
