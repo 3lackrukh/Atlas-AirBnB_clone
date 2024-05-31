@@ -5,7 +5,7 @@ import datetime
 
 from models.base_model import BaseModel
 
-class TestMyClass(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
 
     def test_id_initialization(self):
         obj = BaseModel()
