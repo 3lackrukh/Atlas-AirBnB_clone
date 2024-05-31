@@ -37,3 +37,4 @@ class FileStorage:
     def new(self, obj):
         """stores an object in __objects"""
         __objects["obj.id"] = obj.to_dict()
+        
