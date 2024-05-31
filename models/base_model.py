@@ -26,9 +26,14 @@ class BaseModel:
             Private method initializes an object
             and generates a unique id using uuid4()
         """
-        self.id = uuid.uuid4().hex
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            self.id = kwargs['id']
+            self.created_at = datetime.fromisoformat(kwargs['created_at'])
+            self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
+        else:
+            self.id = uuid.uuid4().hex
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
