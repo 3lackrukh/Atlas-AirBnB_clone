@@ -63,7 +63,7 @@ class FileStorage:
             with open(self.file_path, "w") as f:
                 json.dump(self.objects, f)
 
-    def reload(self)
+    def reload(self):
         if os.path.exists(self.file_path):
             with open(self.file_path, "r") as f:
                 for i in json.load(f)
