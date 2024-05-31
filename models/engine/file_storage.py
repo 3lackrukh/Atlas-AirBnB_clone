@@ -9,6 +9,7 @@
 """ 
 
 import json
+import os
 from models.base_model import BaseModel
 
 
@@ -42,22 +43,29 @@ class FileStorage:
 
     @file_path.setter
     def file_path(self, file_path):
-        self.__file_path = file_path
+        self.file_path = file_path
 
     @objects.setter
     def objects(self, objects):
-        self.__objects = objects
+        self.objects = objects
 
     def all(self):
         """Returns the dictionary __objects"""
-        return self.__objects
+        return self.objects
 
     def new(self, obj):
         """Stores an object in __objects"""
-        self.__objects["obj.id"] = obj.to_dict()
+        self.objects["obj.id"] = obj.to_dict()
 
     def save(self):
         """serializes __objects to the JSON file specified in __file_path"""
-        if self.__file_path:
-            with open(self.__file_path, "w") as f:
-                json.dump(self.__objects, f)
+        if self.file_path:
+            with open(self.file_path, "w") as f:
+                json.dump(self.objects, f)
+
+    def reload(self)
+        if os.path.exists(self.file_path):
+            with open(self.file_path, "r") as f:
+                for i in json.load(f)
+                    self.new(BaseModel(**i))
+
