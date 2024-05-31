@@ -14,3 +14,13 @@ class MyFileStorage(unittest.TestCase):
         store1 = FileStorage()
         self.assertIsInstance(store1.file_path, str)
         self.assertIsInstance(store1.objects, dict)
+
+    def test_new(self):
+        """Tests to make sure objects are stored as dictionary objects"""
+        store1 = FileStorage()
+        obj = BaseModel()
+        obj2 = BaseModel()
+        store1.new(obj)
+        store1.new(obj2)
+        self.assertIn(obj.id, store1.objects)
+        self.assertIn(obj2.id, store1.objects)
