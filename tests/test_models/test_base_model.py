@@ -34,6 +34,14 @@ class TestMyClass(unittest.TestCase):
         obj.save()
         saved = obj.updated_at
         self.assertNotEqual(initial, saved)
+    
+    def test_to_dict(self):
+        obj = BaseModel()
+        dictionary = obj.to_dict()
+        self.assertEqual(dictionary["__class__"], "BaseModel")
+        self.assertEqual(dictionary["id"], obj.id)
+        self.assertEqual(dictionary["created_at"], obj.created_at.isoformat())
+        self.assertEqual(dictionary["updated_at"], obj.updated_at.isoformat())
 
 if __name__ == '__main__':
     unittest.main()
