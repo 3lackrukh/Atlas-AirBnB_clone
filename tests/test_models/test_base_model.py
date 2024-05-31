@@ -45,6 +45,8 @@ class TestMyClass(unittest.TestCase):
 
     def test_init_from_dict(self):
         obj = BaseModel()
+        obj_2 = BaseModel()
+        self.assertNotEqual(obj.id, obj_2.id)
         json_obj = BaseModel(**obj.to_dict())
         self.assertEqual(obj.id, json_obj.id)
         self.assertEqual(obj.created_at, json_obj.created_at)
