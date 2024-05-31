@@ -6,6 +6,8 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     """Console Class"""
 
+    prompt = "(hbnb) "
+
     def do_quit(self, line):
         """Handles quit Command"""
         return True
@@ -17,3 +19,6 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Does nothing when Enter is pressed"""
         pass
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
