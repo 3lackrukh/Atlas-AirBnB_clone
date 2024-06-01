@@ -2,10 +2,8 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from models import storage
-    
+    from models import storage 
 import uuid
-from models import storage
 from datetime import datetime
 
 """
