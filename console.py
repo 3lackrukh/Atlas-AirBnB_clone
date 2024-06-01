@@ -21,6 +21,10 @@ class HBNBCommand(cmd.Cmd):
         """Does nothing when Enter is pressed"""
         pass
 
+    def do_create(self, arg):
+        """ creates new instance of BaseModel """
+        if len(arg) < 0:
+            print("** class name missing **")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
