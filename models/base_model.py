@@ -19,7 +19,8 @@ class BaseModel:
             Private instance Methods:
                 - __str__: returns a string representation of an instance.
             Public instance Methods:
-                - save: updates the updated_at attribute with the current datetime. 
+                - save: updates the updated_at attribute with the
+                current datetime.
                 - to_dict: returns a dictionary of instance attributes.
 
     """

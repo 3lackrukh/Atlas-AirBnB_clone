@@ -7,3 +7,4 @@ class City (BaseModel):
     """City class"""
     state_id = ""
     city_name = ""
+    
