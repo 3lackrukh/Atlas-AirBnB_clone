@@ -3,6 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     """Console Class"""
 
@@ -20,5 +21,7 @@ class HBNBCommand(cmd.Cmd):
         """Does nothing when Enter is pressed"""
         pass
 
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
+    
