@@ -50,12 +50,12 @@ class FileStorage:
         self.objects = objects
 
     def all(self):
-        """Returns the dictionary __objects"""
+        """Returns the dictionary objects"""
         return self.objects
 
     def new(self, obj):
-        """Stores an object in __objects"""
-        self.objects[obj.id]= obj.to_dict()
+        """Stores an object in objects"""
+        self.objects[obj.id] = obj.to_dict()
 
     def save(self):
         """serializes __objects to the JSON file specified in __file_path"""
@@ -67,5 +67,5 @@ class FileStorage:
         if os.path.exists(self.file_path):
             with open(self.file_path, "r") as f:
                 for i in json.load(f):
-                    self.new(BaseModel(**i))
-
+                    kw = {k: v for k, v in i.items() if k!= '__class__'}
+                    self.new(BaseModel(**kw))
