@@ -17,6 +17,7 @@ class FileStorage:
     """
         Attributes:
             - __file_path(str): path to the JSON file
+                                If none is specified, defaults to 'file.json'
             - __objects(dict): objects stored by <class name>.id
 
         Methods:
@@ -29,7 +30,7 @@ class FileStorage:
                       does nothing.
     """
     
-    def __init__(self, file_path=""):
+    def __init__(self, file_path="file.json"):
         self.__file_path = file_path
         self.__objects = {}
 
