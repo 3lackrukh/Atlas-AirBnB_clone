@@ -39,7 +39,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             # Add new instance to storage
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -55,7 +55,7 @@ class BaseModel:
             Updates updated_at attribute with current datetime.
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
