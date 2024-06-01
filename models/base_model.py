@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import uuid
+from models import storage
 from datetime import datetime
 
 """
@@ -28,13 +29,17 @@ class BaseModel:
             and generates a unique id using uuid4()
         """
         if kwargs:
+            # Load from dictionary representation
             self.id = kwargs['id']
             self.created_at = datetime.fromisoformat(kwargs['created_at'])
             self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
         else:
+            # New instance
             self.id = uuid.uuid4().hex
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            # Add new instance to storage
+            storage.new(self)
 
     def __str__(self):
         """
@@ -50,6 +55,7 @@ class BaseModel:
             Updates updated_at attribute with current datetime.
         """
         self.updated_at = datetime.now()
+        storage.save(self)
 
     def to_dict(self):
         """
