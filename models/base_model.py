@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from models import storage 
+import models
 import uuid
 from datetime import datetime
 
