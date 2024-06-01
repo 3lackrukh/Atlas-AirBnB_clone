@@ -13,4 +13,3 @@ class Place(BaseModel):
     number_of_rooms = 0
     number_of_bathrooms = 0
     amenities = []
-    
