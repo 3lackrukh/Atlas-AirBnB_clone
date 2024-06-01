@@ -44,7 +44,7 @@ class FileStorage:
 
     @file_path.setter
     def file_path(self, file_path):
-        self.file_path = file_path
+        self.__file_path = file_path
 
     @objects.setter
     def objects(self, objects):
