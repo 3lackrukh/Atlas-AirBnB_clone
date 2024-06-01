@@ -6,7 +6,7 @@
             to a JSON file
         -  deserializes a JSON file to an
             instance of BaseModel
-""" 
+"""
 
 import json
 import os
@@ -23,13 +23,13 @@ class FileStorage:
         Methods:
             - all: returns the __objects dictionary
             - new: stores an object in __objects
-            - save: serializes __objects to the JSON file 
+            - save: serializes __objects to the JSON file
                     specified in __file_path
             - reload: deserializes the JSON file specified
                       in __file_path. If file does not exist,
                       does nothing.
     """
-    
+
     def __init__(self, file_path="file.json"):
         self.__file_path = file_path
         self.__objects = {}
@@ -68,5 +68,5 @@ class FileStorage:
             with open(self.file_path, "r") as f:
                 data = json.load(f)
                 for i in data:
-                    kw = {k: v for k, v in i.items() if k!= '__class__'}
+                    kw = {k: v for k, v in i.items() if k != '__class__'}
                     self.new(BaseModel(**kw))
