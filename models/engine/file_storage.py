@@ -66,7 +66,7 @@ class FileStorage:
     def reload(self):
         if os.path.exists(self.file_path):
             with open(self.file_path, "r") as f:
-                data = json.load{f}
+                data = json.load(f)
                 for i in data:
                     kw = {k: v for k, v in i.items() if k != '__class__'}
                     self.new(BaseModel(**kw))
