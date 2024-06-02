@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
         """Does nothing when Enter is pressed"""
         pass
 
-     def check_class(self, value):
+    def check_class(self, value):
         """ Check if:
         a) a class name is given
         b) class name exists in valid_classes dictionary
