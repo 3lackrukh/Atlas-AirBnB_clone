@@ -80,7 +80,7 @@ class FileStorage:
 
     def reload(self):
         if os.path.exists(self.file_path):
-            with open(self.file_path, "r") as f:
+            with open(self.file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 for k, v in data.items():
                     obj = v.get('__class__')
