@@ -40,6 +40,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
 
+        parsed_val = value.split(' ')
+        if parsed_val[0] not in valid_classes.keys():
+            print("** class does not exist **")
+            return False
+
+        return True
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
