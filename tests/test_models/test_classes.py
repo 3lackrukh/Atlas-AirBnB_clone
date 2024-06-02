@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""test module for other classes"""
+"""test module for all subclasses"""
 import unittest
 import os
 from models.base_model import BaseModel
