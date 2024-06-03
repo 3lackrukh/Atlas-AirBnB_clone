@@ -31,6 +31,8 @@ class MyFileStorage(unittest.TestCase):
         obj2 = BaseModel()
         obj.name = 'obj'
         obj2.name = 'obj2'
+        print(obj)
+        print(obj2)
         obj.save()
         obj2.save()
         models.storage.save()
