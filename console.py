@@ -79,11 +79,14 @@ class HBNBCommand(cmd.Cmd):
                 print(storage.all()[key])
 
     def do_update(self, arg):
+        """
+        Updates based on class and ID with
+        add/update attributes
+        """
 
 
     def do_all(self, arg):
-
-
+        """Prints All"""
 
 
 if __name__ == "__main__":
