@@ -46,6 +46,23 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
+    @property
+    def file_path(self):
+        """Getter for the file path."""
+        return self.__file_path
+
+    @classmethod
+    @property
+    def objects(cls):
+        """Getter for the objects dictionary."""
+        return cls.__objects
+
+    def set_file_path(self, path):
+        """setter for the file_path"""
+        if isinstance(path, str):
+            self.__file_path = path
+        else:
+            raise ValueError("file_path must be a string.")
 
     def all(self):
         """Returns the dictionary objects"""
