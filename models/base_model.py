@@ -31,11 +31,11 @@ class BaseModel:
         """
         if kwargs:
             # Load from dictionary representation
-            for k in kwargs:
+            for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
-                    self.k = datetime.fromisoformat(kwargs[k])
+                    self.__dict__[k] = datetime.fromisoformat(v)
                 if k != '__class__':
-                    self.__dict__[k] = kwargs[k]
+                    self.__dict__[k] = v
 
         else:
             # New instance
