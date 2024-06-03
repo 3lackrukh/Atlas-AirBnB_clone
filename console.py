@@ -46,8 +46,15 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         return True
+    
+    def do_create(self, arg):
+        """Creates a new instance of an object"""
+        if self.check_class(arg):
+            new = valid_classes[arg]()
+            new.save()
+            print(new.id)
 
-    def do_show(self,arg):
+    def do_show(self, arg):
         """Prints string based on class and id"""
         if self.check_class(arg):
             word = arg.split(' ')
@@ -55,11 +62,12 @@ class HBNBCommand(cmd.Cmd):
                 key = "{}.{}".format(word[0], word[1])
                 print(storage.all()[key])
 
-    def do_create
+    def do_update(self, arg):
 
-    def do_update
 
-    def do_all
+    def do_all(self, arg):
+
+
 
 
 if __name__ == "__main__":
