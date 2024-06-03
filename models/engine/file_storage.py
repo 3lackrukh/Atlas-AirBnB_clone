@@ -28,7 +28,7 @@ classes = {
     "User": User}
 
 
-class FileStorage:
+class FileStorage():
     """
         Attributes:
             - __file_path(str): path to the JSON file
@@ -46,6 +46,7 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
+
     @property
     def file_path(self):
         """Getter for the file path."""
