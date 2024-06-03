@@ -94,6 +94,16 @@ class HBNBCommand(cmd.Cmd):
             n = [str(obj) for key, obj in storage.all().items()]
             print(n)
 
+    def do_destroy(self, arg):
+        """Deletes an instance based on class name and id"""
+        if self.check_class(arg):
+            word.arg.split(' ')
+            valid_key = self.valid_instance(word)
+            if valid_key:
+                del storage.all()[valid_key]
+                storage.save()
+
+
     def do_update(self, arg):
         """
         Updates based on class and ID with
