@@ -56,4 +56,17 @@ class TestFileStorage(unittest.TestCase):
         objs = self.storage.all()
         self.assertEqual(objs[k], self.obj)
 
-    #def test_reload(self):       
+    def test_reload(self):
+        """Tests that save creates json file
+            and reload correctly deserializes object data"""
+        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        self.storage.new(self.obj)
+        self.storage.save()
+        new_stor = FileStorage()
+        new_stor.reload()
+        rel_obj = new_stor.all()[k]
+        self.assertEqual(rel_obj.id, self.obj.id)
+        self assertEqual(rel_obj.to_dict(), self.obj.to_dict())
+
+    if __name__ == '__main__':
+        unittest.main()
