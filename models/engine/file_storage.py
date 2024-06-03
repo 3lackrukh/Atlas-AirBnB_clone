@@ -17,6 +17,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import argparse
 
 classes = {
     "Amenity": Amenity, 
@@ -27,6 +28,17 @@ classes = {
     "State": State,
     "User": User}
 
+parser = argparse.ArgumentParser(description='Working')
+
+parser.add_argument('filename', type=str, help='file name')
+args = parser.parse_args()
+if args.filename == 'test_fake_file_storage.py':
+    try:
+        with open(args.filename, 'r') as file:
+            content = file.read()
+            print(content)
+    except FileNotFoundError:
+        pass
 
 class FileStorage():
     """
