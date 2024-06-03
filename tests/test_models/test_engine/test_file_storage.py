@@ -70,6 +70,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         k = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        self.storage.save()
         new_stor = FileStorage()
         new_stor.reload()
         rel_obj = new_stor.all()[k]
