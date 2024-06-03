@@ -83,8 +83,6 @@ class FileStorage():
             json.dump(obj_dict, f)
 
     def reload(self):
-        if os.path.exists("test_fake_file_storage.py"):
-            print("OK")
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 for k, v in json.load(f).items():
