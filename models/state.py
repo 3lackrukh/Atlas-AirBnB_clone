@@ -5,12 +5,14 @@ from models.base_model import BaseModel
 
 class State(BaseModel):
     """State class"""
-    name = ""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._name = ""
 
     @property
     def name(self):
-        return self.__class__.name
+        return self._name
 
     @name.setter
     def name(self, value):
-        self.__class__.name = value
+        self._name = value
