@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
 
         parsed_val = value.split(' ')
         if parsed_val[0] not in valid_classes.keys():
-            print("** class does not exist **")
+            print("** class doesn't exist **")
             return False
 
         return True
