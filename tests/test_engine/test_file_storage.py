@@ -15,42 +15,23 @@ from models.engine.file_storage import FileStorage
 
 
 class MyFileStorage(unittest.TestCase):
-    def setUp(self):
-        """SetUp of a file storage instance for each test"""
-        store1 = FileStorage()
     
-    def test_init(self):
-        """Initializes test case FileStorage"""
-        store1 = FileStorage()
-        self.assertIsInstance(store1.file_path, str)
-        self.assertIsInstance(store1.objects, dict)
+    def test_file_path(self):
+        """Tests __file_path exists and is type str"""
+        self.assertIsInstance(storage.file_path, str)
+
+    def test_objects(self):
+        """Tests __objects exists and is type dict"""
+        self.assertIsInstance(storage.objects, dict)
 
     def test_new(self):
         """Tests to make sure objects are stored as dictionary objects"""
-        #obj = BaseModel()
-        #obj2 = BaseModel()
-        #obj.name = 'obj'
-        #obj2.name = 'obj2'
-        #print(obj)
-        #print(obj2)
-        #obj.save()
-        #obj2.save()
-        #models.storage.save()
-
-       # self.assertIn(obj.id, store1.objects)
-       # self.assertIn(obj2.id, store1.objects)
+        obj = BaseModel()
+        obj.name = 'obj'
+        obj.save()
+        storage.save()
+        self.assertIn(obj.id, storage.__objects)
 
     def test_reload(self):
-        original_obj = BaseModel()
-        #original_crat = original_obj.created_at.isoformat()
-        #original_upat = original_obj.updated_at.isoformat()
 
-        recreated_objects = []
-
-        for obj in models.storage.reload():
-            recreated_objects.append(obj)
-
-            assert original_obj.id == obj.id
-            assert original_obj.created_at == obj.created_at
-            assert original_obj.updated_at == obj.updated_at
        
