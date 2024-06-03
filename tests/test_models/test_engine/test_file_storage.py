@@ -3,6 +3,7 @@
 import unittest
 import models
 import os
+import json
 from models.base_model import BaseModel
 from models.user import User
 from models.city import City
@@ -61,7 +62,13 @@ class TestFileStorage(unittest.TestCase):
             and reload correctly deserializes object data"""
         k = f"{self.obj.__class__.__name__}.{self.obj.id}"
         self.storage.new(self.obj)
+
+        self.assertFalse(os.path.exists(self.file_path))
         self.storage.save()
+        self.assertTrue(os.path.exists(self.file_path))
+        with open(self.file_path, 'r') as f:
+            self.assertEqual(self.obj.to_dict(), json.load(f)[k])
+
         new_stor = FileStorage()
         new_stor.reload()
         rel_obj = new_stor.all()[k]
