@@ -31,9 +31,12 @@ class BaseModel:
         """
         if kwargs:
             # Load from dictionary representation
-            self.id = kwargs['id']
-            self.created_at = datetime.fromisoformat(kwargs['created_at'])
-            self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
+            for k in kwargs:
+                if k == 'created_at' or k == 'updated_at':
+                    self.k = datetime.fromisoformat(kwargs[k])
+                if k != '__class__':
+                    self.__dict__[k] = kwargs[k]
+
         else:
             # New instance
             self.id = uuid.uuid4().hex
