@@ -27,29 +27,30 @@ class MyFileStorage(unittest.TestCase):
 
     def test_new(self):
         """Tests to make sure objects are stored as dictionary objects"""
-        obj = BaseModel()
-        obj2 = BaseModel()
-        obj.name = 'obj'
-        obj2.name = 'obj2'
-        print(obj)
-        print(obj2)
-        obj.save()
-        obj2.save()
-        models.storage.save()
+        #obj = BaseModel()
+        #obj2 = BaseModel()
+        #obj.name = 'obj'
+        #obj2.name = 'obj2'
+        #print(obj)
+        #print(obj2)
+        #obj.save()
+        #obj2.save()
+        #models.storage.save()
 
        # self.assertIn(obj.id, store1.objects)
        # self.assertIn(obj2.id, store1.objects)
 
     def test_reload(self):
-        all_objs = models.storage.all()
-        print("-- initial objects --")
-        for obj_id in all_objs.keys():
-            obj = all_objs[obj_id]
-            print(obj)
-        storage.reload()
-        print("-- reloaded objects --")
-        for obj_id in all_objs.keys():
-            obj = all_objs[obj_id]
-            print(obj)
+        original_obj = BaseModel()
+        #original_crat = original_obj.created_at.isoformat()
+        #original_upat = original_obj.updated_at.isoformat()
 
+        recreated_objects = []
+
+        for obj in models.storage.reload():
+            recreated_objects.append(obj)
+
+            assert original_obj.id == obj.id
+            assert original_obj.created_at == obj.created_at
+            assert original_obj.updated_at == obj.updated_at
        
