@@ -15,4 +15,4 @@ class Test_State(unittest.TestCase):
     """tests for the State class"""
     def test_1(self):
         obj = State()
-        assertIsInstance(obj.name, str)
+        self.assertIsInstance(obj.name, str)
