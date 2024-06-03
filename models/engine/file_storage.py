@@ -85,4 +85,4 @@ class FileStorage:
                 data = json.load(f)
                 for k, v in data.items():
                     obj = classes[v.get('__class__')](**v)
-                    #self.new(obj)
+                    self.new(obj)
