@@ -37,12 +37,12 @@ class HBNBCommand(cmd.Cmd):
         b) class name exists in valid_classes dictionary
         """
         if value == "" or value is None:
-            print("** Class name missing **")
+            print("** class name missing **")
             return False
 
         parsed_val = value.split(' ')
         if parsed_val[0] not in valid_classes.keys():
-            print("** Class does not exist **")
+            print("** class does not exist **")
             return False
 
         return True
