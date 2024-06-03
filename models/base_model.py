@@ -34,10 +34,13 @@ class BaseModel:
             # Load from dictionary representation
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
-                    self.__dict__[k] = datetime.strptime(v, time_format)
+                    v = datetime.strptime(v, time_format)
                 if k != '__class__':
-                    self.__dict__[k] = v
-
+                    setattr(self, k, v)
+                if "id" not in kwargs:
+                    self.id = str(uuid.uuid4())
+                    self.created_at = datetime.now()
+                    self.updated_at = datetime.now()
         else:
             # New instance
             self.id = str(uuid.uuid4())
