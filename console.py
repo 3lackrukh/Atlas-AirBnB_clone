@@ -37,15 +37,29 @@ class HBNBCommand(cmd.Cmd):
         b) class name exists in valid_classes dictionary
         """
         if value == "" or value is None:
-            print("** class name missing **")
+            print("** Class name missing **")
             return False
 
         parsed_val = value.split(' ')
         if parsed_val[0] not in valid_classes.keys():
-            print("** class does not exist **")
+            print("** Class does not exist **")
             return False
 
         return True
+
+    def do_show(self,arg):
+        """Prints string based on class and id"""
+        if self.check_class(arg):
+            word = arg.split(' ')
+            if self.valid_instance(word):
+                key = "{}.{}".format(word[0], word[1])
+                print(storage.all()[key])
+
+    def do_create
+
+    def do_update
+
+    def do_all
 
 
 if __name__ == "__main__":
