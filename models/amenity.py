@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """Amenity class"""
-    _name = ""
+    __name = ""
 
     @property
     def name(self):

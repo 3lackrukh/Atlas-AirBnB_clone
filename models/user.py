@@ -5,10 +5,10 @@ from models.base_model import BaseModel
 
 class User(BaseModel):
     """User class"""
-    _email = ""
-    _password = ""
-    _first_name = ""
-    _last_name = ""
+    __email = ""
+    __password = ""
+    __first_name = ""
+    __last_name = ""
 
     @property
     def email(self):

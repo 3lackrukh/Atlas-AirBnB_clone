@@ -5,8 +5,8 @@ from models.base_model import BaseModel
 
 class City (BaseModel):
     """City class"""
-    _state_id = ""
-    _name = ""
+    __state_id = ""
+    __name = ""
 
     @property
     def name(self):

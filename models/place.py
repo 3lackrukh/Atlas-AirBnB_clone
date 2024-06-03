@@ -5,17 +5,17 @@ from models.base_model import BaseModel
 
 class Place(BaseModel):
     """Place class"""
-    _user_id = ""
-    _city_id = ""
-    _name = ""
-    _description = ""
-    _price_by_night = 0
-    _number_rooms = 0
-    _number_bathrooms = 0
-    _max_guest = 0
-    _latitude = 0.0
-    _longitude = 0.0
-    _amenity_ids = []
+    __user_id = ""
+    __city_id = ""
+    __name = ""
+    __description = ""
+    __price_by_night = 0
+    __number_rooms = 0
+    __number_bathrooms = 0
+    __max_guest = 0
+    __latitude = 0.0
+    __longitude = 0.0
+    __amenity_ids = []
 
     @property
     def user_id(self):
