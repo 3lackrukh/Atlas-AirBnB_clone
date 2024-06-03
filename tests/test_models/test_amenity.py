@@ -15,4 +15,4 @@ class Test_Amenity(unittest.TestCase):
     """tests for the Amenity class"""
     def test_1(self):
         obj = Amenity()
-        assertIsInstance(obj.name, str)
+        self.assertIsInstance(obj.name, str)
