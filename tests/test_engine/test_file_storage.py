@@ -19,24 +19,25 @@ class TestFileStorage(unittest.TestCase):
     
     def setUp(self):
         """set up for testing"""
+        self.file_path = 'file_test.json'
         self.storage = FileStorage()
-        #self.storage.set_file_path("file_test.json")
+        self.storage.set_file_path(self.file_path)
         self.obj = BaseModel()
         self.storage.new(self.obj)
     
     def tearDown(self):
-        """memory cleanup after testing"""
+        """file cleanup after testing"""
         try:
-            os.remove('file.json')
+            os.remove(self.file_path)
         except FileNotFoundError:
             pass
 
     def test_file_path(self):
         """Tests __file_path exists and is type str"""
         self.assertIsInstance(self.storage.file_path, str)
-        self.assertFalse(os.path.exists('file.json'))
+        self.assertFalse(os.path.exists(self.file_path))
         self.storage.save()
-        self.assertTrue(os.path.exists('file.json'))
+        self.assertTrue(os.path.exists(self.file_path))
 
     def test_objects(self):
         """Tests __objects exists and is type dict"""
