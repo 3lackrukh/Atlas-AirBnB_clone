@@ -41,11 +41,8 @@ class MyFileStorage(unittest.TestCase):
 
     def test_new(self):
         """Tests to make sure objects are stored as dictionary objects"""
-        obj = BaseModel()
-        obj.name = 'obj'
-        obj.save()
-        storage.save()
-        self.assertIn(obj.id, storage.__objects)
+        self.storage.new(self.obj)
+        self.assertIn(self.obj.id, self.storage.__objects)
 
     def test_reload(self):
 
