@@ -13,4 +13,6 @@ from models.user import User
 class Test_City(unittest.TestCase):
     """tests for the City class"""
     def test_1(self):
-        pass
+        obj = City()
+        assertIsInstance(obj.name, str)
+        assertIsInstance(obj.state_id, str)
