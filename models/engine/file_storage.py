@@ -32,7 +32,7 @@ parser = argparse.ArgumentParser(description='Working')
 
 parser.add_argument('filename', type=str, help='file name')
 args = parser.parse_args()
-if args.filename == 'test_fake_file_storage.py':
+if args.filename == './test_fake_file_storage.py':
     try:
         with open(args.filename, 'r') as file:
             content = file.read()
