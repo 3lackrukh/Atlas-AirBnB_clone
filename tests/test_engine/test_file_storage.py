@@ -66,7 +66,7 @@ class TestFileStorage(unittest.TestCase):
         new_stor.reload()
         rel_obj = new_stor.all()[k]
         self.assertEqual(rel_obj.id, self.obj.id)
-        self assertEqual(rel_obj.to_dict(), self.obj.to_dict())
+        self.assertEqual(rel_obj.to_dict(), self.obj.to_dict())
 
     if __name__ == '__main__':
         unittest.main()
