@@ -14,9 +14,3 @@ class Test_Review(unittest.TestCase):
     """tests for the Review class"""
     def test_1(self):
         pass
-    
-    def test_2(self):
-        pass
-
-    def test_3(self):
-        pass

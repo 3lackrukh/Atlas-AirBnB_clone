@@ -14,15 +14,3 @@ class Test_User(unittest.TestCase):
     """tests for the User class"""
     def test_1(self):
         pass
-    
-    def test_2(self):
-        pass
-
-    def test_3(self):
-        pass
-
-    def test_4(self):
-        pass
-
-    def test_5(self):
-        pass
