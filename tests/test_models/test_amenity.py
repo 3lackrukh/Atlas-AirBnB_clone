@@ -13,4 +13,5 @@ from models.user import User
 class Test_Amenity(unittest.TestCase):
     """tests for the Amenity class"""
     def test_1(self):
-        pass
+        obj = Amenity()
+        assertIsInstance(obj.name, str)
