@@ -78,16 +78,40 @@ class HBNBCommand(cmd.Cmd):
                 key = "{}.{}".format(word[0], word[1])
                 print(storage.all()[key])
 
+    def do_all(self, arg):
+        """Prints all instances"""
+        if arg != "":
+            word = arg.split(' ')
+            if word[0] not in valid_classes.keys():
+                print("** Class does not exist **")
+            else:
+                n = [
+                    str(obj) for key, obj in storage.all().items()
+                    if type(obj).__name__ == word[0]
+                ]
+                print(n)
+        else:
+            n = [str(obj) for key, obj in storage.all().items()]
+            print(n)
+
+
     def do_update(self, arg):
         """
         Updates based on class and ID with
         add/update attributes
         """
-
-
-    def do_all(self, arg):
-        """Prints All"""
-
+        if self.check_class(arg):
+            word = arg.split(' ')
+            valid_key = self.valid_instance(word)
+            if valid_key:
+                if len(word) < 3:
+                    print ("** Attribute name is missing **")
+                    return False
+                if len(word) > 4:
+                    print ("** Value is missing **")
+                    return False
+                if valid_key in storage.all().keys():
+                    setattr(storage.all()[valid_key], word[2], word[3].strip('\'"'))
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
