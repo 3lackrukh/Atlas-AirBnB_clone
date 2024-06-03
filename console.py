@@ -113,10 +113,10 @@ class HBNBCommand(cmd.Cmd):
             valid_key = self.valid_instance(word)
             if valid_key:
                 if len(word) < 3:
-                    print ("** Attribute name is missing **")
+                    print ("** attribute name missing **")
                     return False
                 if len(word) > 4:
-                    print ("** Value is missing **")
+                    print ("** value missing **")
                     return False
                 if valid_key in storage.all().keys():
                     setattr(storage.all()[valid_key], word[2], word[3].strip('\'"'))
