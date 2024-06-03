@@ -33,7 +33,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_file_path(self):
         """Tests __file_path exists and is type str"""
-        self.assertIsInstance(storage.__file_path, str)
+        self.assertIsInstance(self.storage.file_path, str)
 
     def test_objects(self):
         """Tests __objects exists and is type dict"""
