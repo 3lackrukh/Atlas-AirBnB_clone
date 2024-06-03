@@ -94,7 +94,6 @@ class HBNBCommand(cmd.Cmd):
             n = [str(obj) for key, obj in storage.all().items()]
             print(n)
 
-
     def do_update(self, arg):
         """
         Updates based on class and ID with
