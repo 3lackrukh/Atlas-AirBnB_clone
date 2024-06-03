@@ -83,14 +83,6 @@ class FileStorage():
             json.dump(obj_dict, f)
 
     def reload(self):
-        from models.base_model import BaseModel
-        from models.__init__ import storage
-        from models.user import User
-        from models.amenity import Amenity
-        from models.city import City
-        from models.place import Place
-        from models.review import Review
-        from models.state import State
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 for k, v in json.load(f).items():
