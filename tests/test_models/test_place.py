@@ -23,7 +23,7 @@ class Test_Place(unittest.TestCase):
         self.assertIsInstance(obj.number_rooms, int)
         self.assertIsInstance(obj.number_bathrooms, int)
         self.assertIsInstance(obj.max_guest, int)
-        self.assertIsInstance(obj.longitude, int)
-        self.assertIsInstance(obj.latitude, int)
+        self.assertIsInstance(obj.longitude, float)
+        self.assertIsInstance(obj.latitude, float)
         self.assertIsInstance(obj.amenity_ids, list)
         
