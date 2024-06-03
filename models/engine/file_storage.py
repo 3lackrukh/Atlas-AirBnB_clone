@@ -83,7 +83,7 @@ class FileStorage():
             json.dump(obj_dict, f)
 
     def reload(self):
-        if os.file.exists("../file_storage_5.py"):
+        if os.path.exists("../file_storage_5.py"):
             print("OK")
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as f:
