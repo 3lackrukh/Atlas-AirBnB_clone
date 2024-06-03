@@ -86,5 +86,4 @@ class FileStorage():
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 for k, v in json.load(f).items():
-                    rel_obj = (classes[v.get('__class__')](**v))
-                    self.__objects[k] = rel_obj
+                    self.new(classes[v.get('__class__')](**v))
