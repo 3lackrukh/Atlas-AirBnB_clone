@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
         if arg != "":
             word = arg.split(' ')
             if word[0] not in valid_classes.keys():
-                print("** Class does not exist **")
+                print("** class doesn't exist **")
             else:
                 n = [
                     str(obj) for key, obj in storage.all().items()
