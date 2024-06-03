@@ -13,7 +13,7 @@ from models.user import User
 class Test_Place(unittest.TestCase):
     """tests for the Place class"""
     def test_1(self):
-        obj = State()
+        obj = Place()
         assertIsInstance(obj.name, str)
         assertIsInstance(obj.user_id, str)
         assertIsInstance(obj.city_id, str)

@@ -13,4 +13,7 @@ from models.user import User
 class Test_Review(unittest.TestCase):
     """tests for the Review class"""
     def test_1(self):
-        pass
+        obj = Review()
+        assertIsInstance(obj.place_id, str)
+        assertIsInstance(obj.user_id, str)
+        assertIsInstance(obj.text, str)
