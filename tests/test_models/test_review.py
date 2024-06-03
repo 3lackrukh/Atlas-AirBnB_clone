@@ -20,9 +20,3 @@ class Test_Review(unittest.TestCase):
 
     def test_3(self):
         pass
-
-    def test_4(self):
-        pass
-
-    def test_5(self):
-        pass
