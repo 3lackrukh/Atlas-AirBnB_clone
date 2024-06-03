@@ -46,7 +46,23 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         return True
-    
+
+    def valid_instance(self, value):
+        """ Check if:
+        a) instance name is given
+        b) instance name exists in valid_instances dictionary
+        """
+        if len(value) < 2:
+            print("** instance id missing **")
+            return False
+
+        key = "{}.{}".format(value[0], value[1])
+        if key not in storage.all().keys():
+            print("** no instance found **")
+            return False
+
+        return key
+
     def do_create(self, arg):
         """Creates a new instance of an object"""
         if self.check_class(arg):
