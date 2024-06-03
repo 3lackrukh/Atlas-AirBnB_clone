@@ -29,11 +29,12 @@ class BaseModel:
             Private method initializes an object
             and generates a unique id using uuid4()
         """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             # Load from dictionary representation
             for k, v in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
-                    self.__dict__[k] = datetime.fromisoformat(v)
+                    self.__dict__[k] = datetime.strptime(v, time_format)
                 if k != '__class__':
                     self.__dict__[k] = v
 
@@ -65,14 +66,14 @@ class BaseModel:
         """
             Returns a dictionary of instance attributes
         """
-        dictionary = self.__dict__.copy()
-        dictionary["__class__"] = self.__class__.__name__
-        try:
-            dictionary["created_at"] = self.created_at.isoformat()
-        except AttributeError:
-            pass
-        try:
-            dictionary["updated_at"] = self.updated_at.isoformat()
-        except AttributeError:
-            pass
-        return dictionary
+        dic = self.__dict__.copy()
+        dic["__class__"] = self.__class__.__name__
+        if isinstance(dic["created_at"], datetime):
+            dic["created_at"] = self.created_at.isoformat()
+        else:
+            dic["created_at"] = self.created_at
+        if isinstance(dic["updated_at"], datetime):
+            dic["updated_at"] = self.updated_at.isoformat()
+        else:
+            dic["updated_at"] = self.updated_at
+        return dic
