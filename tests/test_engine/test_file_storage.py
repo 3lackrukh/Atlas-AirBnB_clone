@@ -27,24 +27,27 @@ class MyFileStorage(unittest.TestCase):
 
     def test_new(self):
         """Tests to make sure objects are stored as dictionary objects"""
-        store1 = FileStorage()
         obj = BaseModel()
         obj2 = BaseModel()
-        store1.new(obj)
-        store1.new(obj2)
+        obj.name = 'obj'
+        obj2.name = 'obj2'
+        obj.save()
+        obj2.save()
+        models.storage.save()
+
        # self.assertIn(obj.id, store1.objects)
        # self.assertIn(obj2.id, store1.objects)
 
     def test_reload(self):
         all_objs = models.storage.all()
-        print("-- Reloaded objects --")
+        print("-- initial objects --")
+        for obj_id in all_objs.keys():
+            obj = all_objs[obj_id]
+            print(obj)
+        storage.reload()
+        print("-- reloaded objects --")
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
             print(obj)
 
-        print("-- Create a new object --")
-        my_model = BaseModel()
-        my_model.name = "My_First_Model"
-        my_model.my_number = 89
-        my_model.save()
-        print(my_model)
+       
