@@ -3,6 +3,7 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.amenity import Amenity
+from models.city import City
 from models.base_model import BaseModel
 from models.place import Place
 from models.review import Review
@@ -14,5 +15,5 @@ class Test_City(unittest.TestCase):
     """tests for the City class"""
     def test_1(self):
         obj = City()
-        assertIsInstance(obj.name, str)
-        assertIsInstance(obj.state_id, str)
+        self.assertIsInstance(obj.name, str)
+        self.assertIsInstance(obj.state_id, str)
