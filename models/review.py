@@ -5,9 +5,9 @@ from models.base_model import BaseModel
 
 class Review(BaseModel):
     """Review class"""
-    place_id = ""
-    user_id = ""
-    text = ""
+    _place_id = ""
+    _user_id = ""
+    _text = ""
 
     @property
     def user_id(self):
