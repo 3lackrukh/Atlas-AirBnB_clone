@@ -44,30 +44,12 @@ class FileStorage:
                       in __file_path. If file does not exist,
                       does nothing.
     """
-
-    def __init__(self, file_path="file.json"):
-        self.__file_path = file_path
-        self.__objects = {}
-
-    @property
-    def file_path(self):
-        return self.__file_path
-
-    @property
-    def objects(self):
-        return self.__objects
-
-    @file_path.setter
-    def file_path(self, file_path):
-        self.__file_path = file_path
-
-    @objects.setter
-    def objects(self, objects):
-        self.objects = objects
+    __file_path = "file.json"
+    __objects = {}
 
     def all(self):
         """Returns the dictionary objects"""
-        return self.objects
+        return self.__objects
 
     def new(self, obj):
         """Stores an object in objects"""
@@ -77,17 +59,14 @@ class FileStorage:
     def save(self):
         """serializes __objects to the JSON file specified in __file_path"""
         obj_dict = {}
-        for k, v in self.objects.items():
+        for k, v in self.__objects.items():
             obj_dict[k] = v.to_dict()
-        with open(self.file_path, "w") as f:
+        with open(self.__file_path, "w") as f:
             json.dump(obj_dict, f)
 
     def reload(self):
-        try:
-            if os.path.exists(self.__file_path):
-                with open(self.__file_path, "r", encoding="utf-8") as f:
-                    for k, v in json.load(f).items():
-                        obj = (classes[v.get('__class__')](**v))
-                        self.new(obj)
-        except FileNotFoundError:
-            pass
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, "r", encoding="utf-8") as f:
+                for k, v in json.load(f).items():
+                    obj = (classes[v.get('__class__')](**v))
+                    self.__objects[k] = obj
