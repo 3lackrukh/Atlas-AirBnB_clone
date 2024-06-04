@@ -56,15 +56,22 @@ class TestFileStorage(unittest.TestCase):
         objs = self.storage.all()
         self.assertEqual(objs[k], self.obj)
 
-    def test_save_reload(self):
+    def test_save(self):
+        """Tests that save serializes object to json file"""
+        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        self.storage.new(self.obj)
+        self.storage.save()
+        self.assertEqual(self.storage.all()[k].id, self.obj.id)
+       
+    def test_reload(self):
         """Tests that save serializes object to json file
             and reload correctly deserializes object data"""
-        key = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
         self.storage.new(self.obj)
         self.storage.save()
         storage_2 = FileStorage()
         storage_2.reload()
-        reloaded_obj = storage_2.all()[key]
+        reloaded_obj = storage_2.all()[k]
         self.assertEqual(reloaded_obj.id, self.obj.id)
         self.assertEqual(reloaded_obj.to_dict(), self.obj.to_dict())
 
