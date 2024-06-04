@@ -31,9 +31,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(expected, str(obj))
 
     def test_save(self):
-        pre_save = self.obj.updated_at
-        self.obj.save()
-        post_save = self.obj.updated_at
+        obj = BaseModel()
+        pre_save = obj.updated_at
+        obj.save()
+        post_save = obj.updated_at
         self.assertNotEqual(pre_save, post_save)
     
     def test_to_dict(self):
