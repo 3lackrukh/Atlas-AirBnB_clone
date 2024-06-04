@@ -59,12 +59,12 @@ class TestFileStorage(unittest.TestCase):
     def test_save_reload(self):
         """Tests that save serializes object to json file
             and reload correctly deserializes object data"""
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        key = f"{self.obj.__class__.__name__}.{self.obj.id}"
         self.storage.new(self.obj)
         self.storage.save()
         storage_2 = FileStorage()
         storage_2.reload()
-        reloaded_obj = storage_2.all()[k]
+        reloaded_obj = storage_2.all()[key]
         self.assertEqual(reloaded_obj.id, self.obj.id)
         self.assertEqual(reloaded_obj.to_dict(), self.obj.to_dict())
 
