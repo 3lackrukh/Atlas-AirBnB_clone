@@ -119,8 +119,8 @@ class HBNBCommand(cmd.Cmd):
                     print("** value missing **")
                     return False
                 if valid_key in storage.all().keys():
-                    setattr(
-                        storage.all()[valid_key], word[2], word[3].strip('\'"'))
+                    setattr(storage.all()[valid_key], word[2],
+                            word[3].strip('\'"'))
 
 
 if __name__ == "__main__":
