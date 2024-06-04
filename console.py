@@ -113,13 +113,14 @@ class HBNBCommand(cmd.Cmd):
             valid_key = self.valid_instance(word)
             if valid_key:
                 if len(word) < 3:
-                    print ("** attribute name missing **")
+                    print("** attribute name missing **")
                     return False
                 if len(word) < 4:
-                    print ("** value missing **")
+                    print("** value missing **")
                     return False
                 if valid_key in storage.all().keys():
                     setattr(storage.all()[valid_key], word[2], word[3].strip('\'"'))
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
