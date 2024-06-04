@@ -7,6 +7,8 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
 
+    def
+
     def test_id_initialization(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.id)
@@ -15,10 +17,12 @@ class TestBaseModel(unittest.TestCase):
     def test_created_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.created_at)
+        self.assertTrue(type(obj.created_at) is datetime)
 
     def test_updated_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.updated_at)
+        self.assertTrue(type(obj.updated_at) is datetime)
     
     def test_str(self):
         obj = BaseModel()
@@ -30,10 +34,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         obj = BaseModel()
-        initial = obj.updated_at
+        pre_save = obj.updated_at
         obj.save()
-        saved = obj.updated_at
-        self.assertNotEqual(initial, saved)
+        post_save = obj.updated_at
+        self.assertNotEqual(pre_save, post_save)
     
     def test_to_dict(self):
         obj = BaseModel()
