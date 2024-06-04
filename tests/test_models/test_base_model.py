@@ -7,8 +7,6 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
 
-    def
-
     def test_id_initialization(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.id)
