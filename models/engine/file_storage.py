@@ -83,6 +83,7 @@ class FileStorage():
         for k, v in self.__objects.items():
             #convert and store instance strings as attribute dictionaries
             obj_dict[k] = v.to_dict()
+            #open or create json file to store new dictionary
         with open(self.__file_path, "w") as f:
             json.dump(obj_dict, f)
 
