@@ -1,68 +1,56 @@
 #!/usr/bin/python3
-
 import unittest
-import json
-import os
+import uuid
+import datetime
+
 from models.base_model import BaseModel
-from models import storage
-from models.engine.file_storage import FileStorage
 
-class TestFileStorage(unittest.TestCase):
-    """This is the unittest for File Storage"""
-    def setUp(self):
-        """This method is the set up for testing"""
-        self.file_path = "file_test.json"
-        storage.__file_path = self.file_path
-        self.storage = FileStorage()
-        self.obj = BaseModel()
-    
-    def tearDown(self):
-        """This cleans up after testing"""
-        try:
-            os.remove(self.file_path)
-        except FileNotFoundError:
-            pass
+class TestBaseModel(unittest.TestCase):
 
-    def test_all(self):
-        """This tests the all method"""
-        all_objects = self.storage.all()
-        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
-        self.storage.new(self.obj)
-        all_objects = self.storage.all()
-        self.assertEqual(all_objects[key], self.obj)
-    
-    def test_new(self):
-        """This tests the new method"""
-        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
-        self.storage.new(self.obj)
-        self.assertIn(key, self.storage.all())
-    
-    def test_update(self):
-        """This tests the update method"""
-        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
-        self.storage.new(self.obj)
-        new_value = "new_value"
-        self.storage.update(self.obj, 'test_attribute', new_value)
-        updated_object = self.storage.all()[key]
-        self.assertEqual(getattr(updated_object, 'test_attribute'), new_value)
+    def test_id_initialization(self):
+        obj = BaseModel()
+        self.assertIsNotNone(obj.id)
+        self.assertIsInstance(obj.id, str)
 
-    def test_remove(self):
-        """This tests the remove method"""
-        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
-        self.storage.new(self.obj)
-        self.storage.remove(key)
-        self.assertNotIn(key, self.storage.all())
-    
-    def test_save_and_reload(self):
-        """This tests the save and reload methods"""
-        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
-        self.storage.new(self.obj)
-        self.storage.save()
-        new_storage = FileStorage()
-        new_storage.reload()
-        reloaded_object = new_storage.all()[key]
-        self.assertEqual(reloaded_object.id, self.obj.id)
-        self.assertEqual(reloaded_object.to_dict(), self.obj.to_dict())
+    def test_created_at(self):
+        obj = BaseModel()
+        self.assertIsNotNone(obj.created_at)
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_updated_at(self):
+        obj = BaseModel()
+        self.assertIsNotNone(obj.updated_at)
+    
+    def test_str(self):
+        obj = BaseModel()
+        expected = "[{}] ({}) {}".format(
+            obj.__class__.__name__,
+            obj.id,
+            obj.__dict__)
+        self.assertEqual(expected, str(obj))
+
+    def test_save(self):
+        obj = BaseModel()
+        initial = obj.updated_at
+        obj.save()
+        saved = obj.updated_at
+        self.assertNotEqual(initial, saved)
+    
+    def test_to_dict(self):
+        obj = BaseModel()
+        dictionary = obj.to_dict()
+        self.assertEqual(dictionary["__class__"], "BaseModel")
+        self.assertEqual(dictionary["id"], obj.id)
+        self.assertEqual(dictionary["created_at"], obj.created_at.isoformat())
+        self.assertEqual(dictionary["updated_at"], obj.updated_at.isoformat())
+
+    def test_init_from_dict(self):
+        obj = BaseModel()
+        obj_2 = BaseModel()
+        self.assertNotEqual(obj.id, obj_2.id)
+        json_obj = BaseModel(**obj.to_dict())
+        self.assertEqual(obj.id, json_obj.id)
+        self.assertEqual(obj.created_at, json_obj.created_at)
+        self.assertEqual(obj.updated_at, json_obj.updated_at)
+
+if __name__ == '__main__':
+    unittest.main()

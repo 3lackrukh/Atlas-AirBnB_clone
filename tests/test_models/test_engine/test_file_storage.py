@@ -1,81 +1,68 @@
 #!/usr/bin/python3
-"""Tests for file storage"""
+
 import unittest
-import models
-import os
 import json
+import os
 from models.base_model import BaseModel
-from models.user import User
-from models.city import City
-from models.place import Place
-from models.state import State
-from models.review import Review
-from models.amenity import Amenity
 from models import storage
-from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
-
 class TestFileStorage(unittest.TestCase):
-    
+    """This is the unittest for File Storage"""
     def setUp(self):
-        """set up for testing"""
-        self.file_path = 'file_test.json'
+        """This method is the set up for testing"""
+        self.file_path = "file_test.json"
+        storage.__file_path = self.file_path
         self.storage = FileStorage()
-        self.storage.set_file_path(self.file_path)
         self.obj = BaseModel()
-        self.storage.new(self.obj)
     
     def tearDown(self):
-        """file cleanup after testing"""
+        """This cleans up after testing"""
         try:
             os.remove(self.file_path)
         except FileNotFoundError:
             pass
 
-    def test_file_path(self):
-        """Tests __file_path exists and is type str"""
-        self.assertIsInstance(self.storage.file_path, str)
-        self.assertFalse(os.path.exists(self.file_path))
-        self.storage.save()
-        self.assertTrue(os.path.exists(self.file_path))
-
-    def test_objects(self):
-        """Tests __objects exists and is type dict"""
-        self.assertIsInstance(self.storage.objects, dict)
-
-    def test_new(self):
-        """Tests to make sure objects are stored as dictionary objects"""
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
-        self.storage.new(self.obj)
-        self.assertIn(k, self.storage.all())
-
     def test_all(self):
-        """tests the all method"""
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
+        """This tests the all method"""
+        all_objects = self.storage.all()
+        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
         self.storage.new(self.obj)
-        objs = self.storage.all()
-        self.assertEqual(objs[k], self.obj)
+        all_objects = self.storage.all()
+        self.assertEqual(all_objects[key], self.obj)
+    
+    def test_new(self):
+        """This tests the new method"""
+        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
+        self.storage.new(self.obj)
+        self.assertIn(key, self.storage.all())
+    
+    def test_update(self):
+        """This tests the update method"""
+        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
+        self.storage.new(self.obj)
+        new_value = "new_value"
+        self.storage.update(self.obj, 'test_attribute', new_value)
+        updated_object = self.storage.all()[key]
+        self.assertEqual(getattr(updated_object, 'test_attribute'), new_value)
 
-    def test_save(self):
-        """Tests that save creates json file
-            and reload correctly deserializes object data"""
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
-
-        self.assertFalse(os.path.exists(self.file_path))
+    def test_remove(self):
+        """This tests the remove method"""
+        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
+        self.storage.new(self.obj)
+        self.storage.remove(key)
+        self.assertNotIn(key, self.storage.all())
+    
+    def test_save_and_reload(self):
+        """This tests the save and reload methods"""
+        key = "{}.{}".format(self.obj.__class__.__name__, self.obj.id)
+        self.storage.new(self.obj)
         self.storage.save()
-        self.assertTrue(os.path.exists(self.file_path))
-        with open(self.file_path, 'r') as f:
-            self.assertEqual(self.obj.to_dict(), json.load(f)[k])
-
-    def test_reload(self):
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
-        self.storage.save()
-        new_stor = FileStorage()
-        new_stor.reload()
-        rel_obj = new_stor.all()[k]
-        self.assertEqual(rel_obj.id, self.obj.id)
-        self.assertEqual(rel_obj.to_dict(), self.obj.to_dict())
+        new_storage = FileStorage()
+        new_storage.reload()
+        reloaded_object = new_storage.all()[key]
+        self.assertEqual(reloaded_object.id, self.obj.id)
+        self.assertEqual(reloaded_object.to_dict(), self.obj.to_dict())
 
     if __name__ == '__main__':
         unittest.main()
