@@ -14,4 +14,9 @@ from models.user import User
 class Test_User(unittest.TestCase):
     """tests for the User class"""
     def test_1(self):
-        pass
+        obj = User()
+        self.assertIsInstance(obj.email, str)
+        self.assertIsInstance(obj.password, str)
+        self.assertIsInstance(obj.first_name, str)
+        self.assertIsInstance(obj.last_name, str)
+        
