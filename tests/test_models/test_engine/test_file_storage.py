@@ -62,11 +62,11 @@ class TestFileStorage(unittest.TestCase):
         k = f"{self.obj.__class__.__name__}.{self.obj.id}"
         self.storage.new(self.obj)
         self.storage.save()
-        stor_2 = FileStorage()
-        stor_2.reload()
-        rel_obj = stor_2.all()[k]
-        self.assertEqual(rel_obj.id, self.obj.id)
-        self.assertEqual(rel_obj.to_dict(), self.obj.to_dict())
+        storage_2 = FileStorage()
+        storage_2.reload()
+        reloaded_obj = storage_2.all()[k]
+        self.assertEqual(reloaded_obj.id, self.obj.id)
+        self.assertEqual(reloaded_obj.to_dict(), self.obj.to_dict())
 
     if __name__ == '__main__':
         unittest.main()
