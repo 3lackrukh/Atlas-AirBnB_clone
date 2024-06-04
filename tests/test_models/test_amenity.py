@@ -16,3 +16,10 @@ class Test_Amenity(unittest.TestCase):
     def test_1(self):
         obj = Amenity()
         self.assertIsInstance(obj.name, str)
+    # self is the instance of the test case class
+    # assertIsInstance is the method from TestCase, and checks whether an object is and instance of the class
+    # obj.name accesses the NAME attribute of the object OBJ
+    # str is the type being checked, in this case, a string
+    # So, self.assertIsInstance(obj.name, str) checks whether the name attribute of obj is an instance of the 
+    #str class (i.e., whether it is a string). If obj.name is not a string, the test will fail, and an 
+    #assertion error will be raised
