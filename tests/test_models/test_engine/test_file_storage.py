@@ -64,7 +64,7 @@ class TestFileStorage(unittest.TestCase):
         self.storage.save()
         stor_2 = FileStorage()
         stor_2.reload()
-        rel_obj = stor_2.all()[k]
+        rel_obj = stor_2.all[k]
         self.assertEqual(rel_obj.id, self.obj.id)
         self.assertEqual(rel_obj.to_dict(), self.obj.to_dict())
 
