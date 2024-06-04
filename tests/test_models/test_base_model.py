@@ -15,12 +15,12 @@ class TestBaseModel(unittest.TestCase):
     def test_created_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.created_at)
-        self.assertTrue(type(obj.created_at) is datetime)
+        self.assertTrue(isinstance(obj.created_at, datetime.datetime))
 
     def test_updated_at(self):
         obj = BaseModel()
         self.assertIsNotNone(obj.updated_at)
-        self.assertTrue(type(obj.updated_at) is datetime)
+        self.assertTrue(isinstance(obj.updated_at, datetime.datetime))
     
     def test_str(self):
         obj = BaseModel()
