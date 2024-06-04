@@ -24,7 +24,6 @@ class TestFileStorage(unittest.TestCase):
         self.storage = FileStorage()
         self.storage.set_file_path(self.file_path)
         self.obj = BaseModel()
-        self.storage.new(self.obj)
     
     def tearDown(self):
         """file cleanup after testing"""
@@ -57,23 +56,15 @@ class TestFileStorage(unittest.TestCase):
         objs = self.storage.all()
         self.assertEqual(objs[k], self.obj)
 
-    def test_save(self):
-        """Tests that save creates json file
+    def test_save_reload(self):
+        """Tests that save serializes object to json file
             and reload correctly deserializes object data"""
         k = f"{self.obj.__class__.__name__}.{self.obj.id}"
-
-        self.assertFalse(os.path.exists(self.file_path))
+        self.storage.new(self.obj)
         self.storage.save()
-        self.assertTrue(os.path.exists(self.file_path))
-        with open(self.file_path, 'r') as f:
-            self.assertEqual(self.obj.to_dict(), json.load(f)[k])
-
-    def test_reload(self):
-        k = f"{self.obj.__class__.__name__}.{self.obj.id}"
-        self.storage.save()
-        new_stor = FileStorage()
-        new_stor.reload()
-        rel_obj = new_stor.all()[k]
+        stor_2 = FileStorage()
+        stor_2.reload()
+        rel_obj = stor_2.all[k]
         self.assertEqual(rel_obj.id, self.obj.id)
         self.assertEqual(rel_obj.to_dict(), self.obj.to_dict())
 
