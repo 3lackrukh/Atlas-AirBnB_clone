@@ -71,13 +71,17 @@ class FileStorage():
 
     def new(self, obj):
         """Stores an object in objects"""
+        #format the key for instance storage
         key = f"{obj.__class__.__name__}.{obj.id}"
+        #add the instance strings to the objects dictionary
         self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file specified in __file_path"""
+        #initialize an empty dictionar
         obj_dict = {}
         for k, v in self.__objects.items():
+            #convert and store instance strings as attribute dictionaries
             obj_dict[k] = v.to_dict()
         with open(self.__file_path, "w") as f:
             json.dump(obj_dict, f)
