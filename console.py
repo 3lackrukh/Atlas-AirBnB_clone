@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
                 if len(word) < 3:
                     print ("** attribute name missing **")
                     return False
-                if len(word) > 4:
+                if len(word) < 4:
                     print ("** value missing **")
                     return False
                 if valid_key in storage.all().keys():
