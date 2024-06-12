@@ -3,10 +3,11 @@
     margin: 30px auto;
     background-color: #FFFFFF;
     height: 70px;
-    justify-self: center;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .filters button {
